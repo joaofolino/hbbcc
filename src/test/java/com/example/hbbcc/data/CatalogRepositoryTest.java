@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 public class CatalogRepositoryTest {
 
     ///TODO
-    @Test public void whenSingleFullPriceProductIsSearched_expectSingleProductRecordContainingNoDiscount() {}
+    @Test void whenSingleFullPriceProductIsSearched_expectSingleProductRecordContainingNoDiscount() {}
 
     ///TODO
-    @Test public void whenMultiFullPriceProductsAreSearched_expectCollectionOfProductRecordsContainingNoDiscount() {}
+    @Test void whenMultiFullPriceProductsAreSearched_expectCollectionOfProductRecordsContainingNoDiscount() {}
 
     ///TODO
-    @Test public void whenSingleDiscountedProductIsSearched_expectSingleProductRecordContainingDiscount() {}
+    @Test void whenSingleDiscountedProductIsSearched_expectSingleProductRecordContainingDiscount() {}
 
     ///TODO
-    @Test public void whenMultiDiscountedProductsAreSearched_expectCollectionOfProductRecordsContainingDiscount() {}
+    @Test void whenMultiDiscountedProductsAreSearched_expectCollectionOfProductRecordsContainingDiscount() {}
 
     ///TODO
-    @Test public void whenCombinedFullPriceAndDiscountedProductsAreSearched_expectCollectionOfProductRecordsWhereSomeContainDiscount() {}
+    @Test void whenCombinedFullPriceAndDiscountedProductsAreSearched_expectCollectionOfProductRecordsWhereSomeContainDiscount() {}
 
 }

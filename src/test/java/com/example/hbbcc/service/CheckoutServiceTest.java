@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 public class CheckoutServiceTest {
 
     ///TODO
-    @Test public void whenSingleFullPriceItemCheckout_expectSingleItemFullPriceTotal() {}
+    @Test void whenSingleFullPriceItemCheckout_expectSingleItemFullPriceTotal() {}
 
     ///TODO
-    @Test public void whenMultiFullPriceItemCheckout_expectCombinedItemsFullPriceTotal() {}
+    @Test void whenMultiFullPriceItemCheckout_expectCombinedItemsFullPriceTotal() {}
 
     ///TODO
-    @Test public void whenMaximumFullPriceItemCheckout_expectMaximumCombinedFullPriceTotal() {}
+    @Test void whenMaximumFullPriceItemCheckout_expectMaximumCombinedFullPriceTotal() {}
 
     ///TODO
     @Test void whenSingleDiscountPriceItemCheckout_expectSingleItemDiscountPriceTotal() {}
