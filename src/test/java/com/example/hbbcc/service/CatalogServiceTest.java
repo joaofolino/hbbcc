@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 public class CatalogServiceTest {
 
     ///TODO
-    @Test public void whenSingleProductIsRequested_expectSingleProduct() {}
+    @Test public void whenSingleFullPriceProductIsRequested_expectSingleProductContainingNoDiscount() {}
 
     ///TODO
-    @Test public void whenMultiProductsAreRequested_expectListOfProducts() {}
+    @Test public void whenMultiFullPriceProductsAreRequested_expectCollectionOfProductsContainingNoDiscount() {}
 
     ///TODO
-    @Test public void whenSingleDiscountedProductIsRequested_expectSingleDiscountedProduct() {}
+    @Test public void whenSingleDiscountedProductIsRequested_expectSingleProductContainingDiscount() {}
 
     ///TODO
-    @Test public void whenMultiDiscountedProductsAreRequested_expectListOfDiscountedProducts() {}
+    @Test public void whenMultiDiscountedProductsAreRequested_expectCollectionOfProductsContainingDiscount() {}
 
     ///TODO
-    @Test public void whenCombinedFullAndDiscountedProductsAreRequested_expectListOfFullAndDiscountedProducts() {}
+    @Test public void whenCombinedFullPriceAndDiscountedProductsAreRequested_expectCollectionOfProductsWhereSomeContainDiscount() {}
 
 }

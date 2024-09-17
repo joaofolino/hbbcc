@@ -5,30 +5,30 @@ import org.junit.jupiter.api.Test;
 public class CheckoutServiceTest {
 
     ///TODO
-    @Test public void whenSingleFullPriceItemCheckout_expectSingleItemPrice() {}
+    @Test public void whenSingleFullPriceItemCheckout_expectSingleItemFullPriceTotal() {}
 
     ///TODO
-    @Test public void whenMultiFullPriceItemCheckout_expectCombinedPrice() {}
+    @Test public void whenMultiFullPriceItemCheckout_expectCombinedItemsFullPriceTotal() {}
 
     ///TODO
-    @Test public void whenMaximumFullPriceItemCheckout_expectMaximumCombinedPrice() {}
+    @Test public void whenMaximumFullPriceItemCheckout_expectMaximumCombinedFullPriceTotal() {}
 
     ///TODO
-    @Test void whenSingleDiscountItemCheckout_expectSingleDiscountItemPrice() {}
+    @Test void whenSingleDiscountPriceItemCheckout_expectSingleItemDiscountPriceTotal() {}
 
     ///TODO
-    @Test void whenMultiDiscountItemsCheckout_expectCombinedDiscountItemsPrice() {}
+    @Test void whenMultiDiscountPriceItemsCheckout_expectCombinedItemsDiscountPriceTotal() {}
 
     ///TODO
-    @Test void whenMaximumDiscountItemsCheckout_expectMaximumDiscountItemsPrice() {}
+    @Test void whenMaximumDiscountPriceItemsCheckout_expectMaximumItemsDiscountPriceTotal() {}
 
     ///TODO
-    @Test void whenSingleFullAndDiscountItemCheckout_expectCombinedSingleFullAndDiscountItemsPrice() {}
+    @Test void whenSingleFullPriceAndDiscountPriceItemCheckout_expectCombinedSingleItemFullPriceWithSingleItemDiscountPriceTotal() {}
 
     ///TODO
-    @Test void whenMultiSingleFullAndDiscountItemsCheckout_expectCombinedSingleFullAndDiscountItemsPrice() {}
+    @Test void whenMultiFullPriceAndDiscountPriceItemsCheckout_expectCombinedMultiItemsFullPriceAndDiscountPriceTotal() {}
 
     ///TODO
-    @Test void whenMaximumSingleFullAndDiscountItemsCheckout_expectCombinedSingleFullAndDiscountItemsPrice() {}
+    @Test void whenMaximumFullPriceAndDiscountPriceItemsCheckout_expectCombinedMaximumItemsFullPriceAndDiscountPriceTotal() {}
 
 }
