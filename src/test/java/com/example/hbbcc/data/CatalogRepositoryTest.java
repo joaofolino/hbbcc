@@ -79,7 +79,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenSingleFullPriceProductIsSearched_expectSingleProductRecordContainingNoDiscount() {
-        Product singleFullPriceProduct = ProductDataGenerator.buildSingleFullPriceProduct();
+        Product singleFullPriceProduct = ProductDataGenerator.buildSingleFullPriceProduct(false);
         repository.save(singleFullPriceProduct);
 
         Optional<Product> optionalFullPriceProduct = repository.findById(singleFullPriceProduct.getProductId());
@@ -87,7 +87,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenMultiFullPriceProductsAreSearched_expectCollectionOfProductRecordsContainingNoDiscount() {
-        Collection<Product> multiFullPriceProducts = ProductDataGenerator.buildMultiFullPriceProducts();
+        Collection<Product> multiFullPriceProducts = ProductDataGenerator.buildMultiFullPriceProducts(false);
         repository.saveAll(multiFullPriceProducts);
 
         Iterable<Product> iterableMultiFullPriceProducts = repository.findAllById(
@@ -96,7 +96,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenSingleDiscountedProductIsSearched_expectSingleProductRecordContainingDiscount() {
-        Product singleDiscountPriceProduct = ProductDataGenerator.buildSingleDiscountPriceProduct();
+        Product singleDiscountPriceProduct = ProductDataGenerator.buildSingleDiscountPriceProduct(false);
         repository.save(singleDiscountPriceProduct);
 
         Optional<Product> optionalDiscountPriceProduct = repository.findById(singleDiscountPriceProduct.getProductId());
@@ -104,7 +104,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenMultiDiscountedProductsAreSearched_expectCollectionOfProductRecordsContainingDiscount() {
-        Collection<Product> multiDiscountPriceProducts = ProductDataGenerator.buildMultiDiscountPriceProducts();
+        Collection<Product> multiDiscountPriceProducts = ProductDataGenerator.buildMultiDiscountPriceProducts(false);
         repository.saveAll(multiDiscountPriceProducts);
 
         Iterable<Product> iterableMultiDiscountPriceProducts = repository.findAllById(
@@ -113,7 +113,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenCombinedFullPriceAndDiscountedProductsAreSearched_expectCollectionOfProductRecordsWhereSomeContainDiscount() {
-        Collection<Product> combinedFullPriceAndDiscountedProducts = ProductDataGenerator.buildCombinedFullPriceAndDiscountedProducts();
+        Collection<Product> combinedFullPriceAndDiscountedProducts = ProductDataGenerator.buildCombinedFullPriceAndDiscountedProducts(false);
         repository.saveAll(combinedFullPriceAndDiscountedProducts);
 
         Iterable<Product> iterableCombinedFullPriceAndDiscountedProducts = repository.findAllById(

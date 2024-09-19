@@ -27,7 +27,7 @@ public class CatalogServiceTest {
     CatalogRepository repository;
 
     @Test void whenSingleProductIsRequested_expectSingleProduct() {
-        Collection<Product> products = buildCombinedFullPriceAndDiscountedProducts();
+        Collection<Product> products = buildCombinedFullPriceAndDiscountedProducts(false);
 
         Product firstProduct = products.stream().findFirst().get();
         Optional<Long> firstProductId = Optional.of(firstProduct.getProductId());
@@ -61,7 +61,7 @@ public class CatalogServiceTest {
     }
 
     @Test void whenMultiProductsAreRequested_expectCollectionOfProducts() {
-        Collection<Product> products = buildCombinedFullPriceAndDiscountedProducts();
+        Collection<Product> products = buildCombinedFullPriceAndDiscountedProducts(false);
         List<Long> productIds = products.stream().map(Product::getProductId).toList();
 
         when(repository.findAllById(productIds)).thenReturn(products);
