@@ -47,17 +47,4 @@ public class CatalogConfiguration extends AbstractJdbcConfiguration {
         return new NamedParameterJdbcTemplate(operations);
     }
 
-    @Bean
-    DataSourceInitializer initializer(DataSource dataSource) {
-
-        var initializer = new DataSourceInitializer();
-        initializer.setDataSource(dataSource);
-
-        var script = new ClassPathResource("schema.sql");
-        var populator = new ResourceDatabasePopulator(script);
-        initializer.setDatabasePopulator(populator);
-
-        return initializer;
-    }
-
 }
