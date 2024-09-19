@@ -1,4 +1,6 @@
-package com.example.hbbcc.model;
+package com.example.hbbcc.model.generator;
+
+import com.example.hbbcc.model.Product;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

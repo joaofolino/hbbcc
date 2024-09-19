@@ -1,8 +1,7 @@
 package com.example.hbbcc.data;
 
 import com.example.hbbcc.model.Product;
-import com.example.hbbcc.model.ProductDataGenerator;
-import org.assertj.core.groups.Tuple;
+import com.example.hbbcc.model.generator.ProductDataGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureJdbc;
@@ -14,6 +13,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Optional;
 
+import static com.example.hbbcc.model.checker.ProductDataChecker.assertRequestedMatchesRetrieved;
 import static com.example.hbbcc.util.BigMath.BIG_DECIMAL_HUNDRED;
 import static com.example.hbbcc.util.BigMath.VALUE_TOO_LARGE_TO_CONVERT;
 import static org.assertj.core.api.Assertions.*;
@@ -92,7 +92,7 @@ public class CatalogRepositoryTest {
 
         Iterable<Product> iterableMultiFullPriceProducts = repository.findAllById(
                 multiFullPriceProducts.stream().map(Product::getProductId).toList());
-        assertStoredMatchesRetrieved(multiFullPriceProducts, iterableMultiFullPriceProducts);
+        assertRequestedMatchesRetrieved(multiFullPriceProducts, iterableMultiFullPriceProducts);
     }
 
     @Test void whenSingleDiscountedProductIsSearched_expectSingleProductRecordContainingDiscount() {
@@ -109,7 +109,7 @@ public class CatalogRepositoryTest {
 
         Iterable<Product> iterableMultiDiscountPriceProducts = repository.findAllById(
                 multiDiscountPriceProducts.stream().map(Product::getProductId).toList());
-        assertStoredMatchesRetrieved(multiDiscountPriceProducts, iterableMultiDiscountPriceProducts);
+        assertRequestedMatchesRetrieved(multiDiscountPriceProducts, iterableMultiDiscountPriceProducts);
     }
 
     @Test void whenCombinedFullPriceAndDiscountedProductsAreSearched_expectCollectionOfProductRecordsWhereSomeContainDiscount() {
@@ -118,23 +118,7 @@ public class CatalogRepositoryTest {
 
         Iterable<Product> iterableCombinedFullPriceAndDiscountedProducts = repository.findAllById(
                 combinedFullPriceAndDiscountedProducts.stream().map(Product::getProductId).toList());
-        assertStoredMatchesRetrieved(combinedFullPriceAndDiscountedProducts, iterableCombinedFullPriceAndDiscountedProducts);
-    }
-
-    private static void assertStoredMatchesRetrieved(Collection<Product> multiDiscountPriceProducts,
-                                                     Iterable<Product> iterableMultiDiscountPriceProducts) {
-        assertThat(iterableMultiDiscountPriceProducts)
-                .extracting(
-                        Product::getProductId,
-                        Product::getName,
-                        Product::getPrice,
-                        product -> product.getDiscounts().size())
-                .containsExactlyElementsOf(
-                        multiDiscountPriceProducts.stream().map(product -> new Tuple(
-                                product.getProductId(),
-                                product.getName(),
-                                product.getPrice(),
-                                product.getDiscounts().size())).toList());
+        assertRequestedMatchesRetrieved(combinedFullPriceAndDiscountedProducts, iterableCombinedFullPriceAndDiscountedProducts);
     }
 
 }
