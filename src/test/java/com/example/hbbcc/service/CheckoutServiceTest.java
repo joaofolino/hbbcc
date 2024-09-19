@@ -75,7 +75,6 @@ public class CheckoutServiceTest {
     ///TODO
     @Test void whenMaximumDiscountPriceItemsCheckout_expectMaximumItemsDiscountPriceTotal() {}
 
-    ///TODO
     @Test void whenSingleFullPriceAndDiscountPriceItemCheckout_expectCombinedSingleItemFullPriceWithSingleItemDiscountPriceTotal() throws ProductNotFoundException {
         Set<Product> products = new HashSet<>();
         products.add(buildSingleFullPriceProduct(true));
