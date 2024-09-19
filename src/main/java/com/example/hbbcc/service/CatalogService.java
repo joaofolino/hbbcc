@@ -26,6 +26,9 @@ public class CatalogService {
         if (productId == null) {
             throw new IllegalArgumentException(String.format(VALUE_MUST_NOT_BE_NULL, "productId"));
         }
+        if (productId.isEmpty()) {
+            return Optional.empty();
+        }
         return repository.findById(productId.get());
     }
 

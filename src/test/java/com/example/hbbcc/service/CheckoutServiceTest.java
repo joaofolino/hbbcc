@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import static com.example.hbbcc.model.generator.ProductDataGenerator.*;
 import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -123,6 +124,15 @@ public class CheckoutServiceTest {
         Exception exception = assertThrows(ProductNotFoundException.class, () -> checkoutService.checkout(List.of(1L, 2L)));
 
         assertTrue(exception.getClass().isAssignableFrom(ProductNotFoundException.class));
+    }
+
+    @Test void whenEmptyItemCheckout_expectEmptyProductNotFoundException() throws ProductNotFoundException {
+        when(catalogService.getProductById(Optional.empty())).thenReturn(Optional.empty());
+
+        CheckoutService checkoutService = new CheckoutService(catalogService);
+        Optional<BigDecimal> total = checkoutService.checkout(List.of());
+
+        assertThat(total).isEmpty();
     }
 
 }

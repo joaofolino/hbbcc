@@ -93,4 +93,12 @@ public class CatalogServiceTest {
         assertTrue(exception.getClass().isAssignableFrom(IllegalArgumentException.class));
     }
 
+    @Test void whenEmptyProductIsRequested_expectEmpty() {
+        CatalogService catalogService = new CatalogService(repository);
+
+        Optional<Product> serviceProduct = catalogService.getProductById(Optional.empty());
+
+        assertThat(serviceProduct).isEmpty();
+    }
+
 }
