@@ -3,8 +3,6 @@ package com.example.hbbcc.service;
 import com.example.hbbcc.model.Discount;
 import com.example.hbbcc.model.Product;
 import com.example.hbbcc.service.exception.ProductNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -23,8 +21,13 @@ public class CheckoutService {
         this.catalogService = catalogService;
     }
 
-    Logger logger = LoggerFactory.getLogger(CatalogService.class);
-
+    /**
+     * Calculates the total price of a given product checkout list, applying a single quantity discount.
+     * Note that this method assumes only one discount per product may exist.
+     * @param productIds a given list of products to checkout.
+     * @return total price with discount.
+     * @throws ProductNotFoundException if one or more products do not exist.
+     */
     Optional<BigDecimal> checkout(List<Long> productIds) throws ProductNotFoundException {
         Map<Long, Long> productQuantities = productIds.stream().collect(
                 Collectors.groupingBy(identity(), Collectors.counting()));
