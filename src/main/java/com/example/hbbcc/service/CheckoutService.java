@@ -28,7 +28,7 @@ public class CheckoutService {
      * @return total price with discount.
      * @throws ProductNotFoundException if one or more products do not exist.
      */
-    Optional<BigDecimal> checkout(List<Long> productIds) throws ProductNotFoundException {
+    public Optional<BigDecimal> checkout(List<Long> productIds) throws ProductNotFoundException {
         Map<Long, Long> productQuantities = productIds.stream().collect(
                 Collectors.groupingBy(identity(), Collectors.counting()));
 
