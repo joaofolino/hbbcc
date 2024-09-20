@@ -27,6 +27,7 @@ dependencies {
     implementation 'org.springframework.data:spring-data-relational:3.3.2'
     implementation 'org.springframework.data:spring-data-jdbc:3.3.2'
     implementation 'org.hsqldb:hsqldb'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
