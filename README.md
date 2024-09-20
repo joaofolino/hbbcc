@@ -7,7 +7,12 @@ Simply navigate to the project path and run the following command to start the s
 ```
 ./gradlew bootRun
 ```
-
+## DockerHub
+Additionally, a docker images for the master branch are available at [DockerHub](https://hub.docker.com/r/joaofolino/hbbcc).
+Use the following to pull it:
+```
+docker pull joaofolino/hbbcc
+```
 # Tests
 Simply navigate to the project path and run the following command to start the server locally.
 ```
@@ -23,6 +28,7 @@ This application was developed from an endpoint description that encapsulated a 
 5. Started the application and checked that everything was actually working as intended.
 6. Finished documenting it.
 7. Reviewed the requirements and made some additional changes to tests, storage and build.
+8. Added CI/CD for master branch
 
 # Improvements
 Additional functionality that was not added but would be nice to have:
