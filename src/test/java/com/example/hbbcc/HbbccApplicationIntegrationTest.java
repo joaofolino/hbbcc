@@ -25,7 +25,7 @@ public class HbbccApplicationIntegrationTest {
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectHeader().valueEquals("Content-Type", "application/json")
-                .expectBody().jsonPath("price").isEqualTo("360.0");
+                .expectBody().jsonPath("price").isEqualTo("360");
     }
 
 }

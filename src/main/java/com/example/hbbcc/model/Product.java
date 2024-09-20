@@ -16,8 +16,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.hbbcc.util.BigMath.BIG_DECIMAL_HUNDRED;
-import static com.example.hbbcc.util.BigMath.checkBigDecimalCanBeAccuratelyConvertedToLong;
+import static com.example.hbbcc.data.util.NumberToStringStorageHelper.checkStringSizeOfBigDecimalConvertion;
 
 @Data
 @AccessType(AccessType.Type.PROPERTY)
@@ -41,14 +40,14 @@ public class Product {
     }
 
     @Column("PRICE")
-    public long getLongPriceInCents() {
-        BigDecimal priceInCents = price.multiply(BIG_DECIMAL_HUNDRED);
-        checkBigDecimalCanBeAccuratelyConvertedToLong(priceInCents);
-        return priceInCents.longValue();
+    public String getStringPrice() {
+        String stringPrice = price.toPlainString();
+        checkStringSizeOfBigDecimalConvertion(stringPrice);
+        return stringPrice;
     }
 
-    public void setLongPriceInCents(long priceInCents) {
-        price = BigDecimal.valueOf(priceInCents).divide(BIG_DECIMAL_HUNDRED);
+    public void setStringPrice(String price) {
+        this.price = new BigDecimal(price);
     }
 
     public void addDiscount(BigInteger quantity, BigDecimal price) {

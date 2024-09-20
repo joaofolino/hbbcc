@@ -15,8 +15,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import static com.example.hbbcc.model.checker.ProductDataChecker.assertRequestedMatchesRetrieved;
-import static com.example.hbbcc.util.BigMath.BIG_DECIMAL_HUNDRED;
-import static com.example.hbbcc.util.BigMath.VALUE_TOO_LARGE_TO_CONVERT;
+import static com.example.hbbcc.data.util.NumberToStringStorageHelper.VALUE_TOO_LARGE_TO_CONVERT;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +28,7 @@ public class CatalogRepositoryTest {
     CatalogRepository repository;
 
     @Test void whenSingleFullPriceProductIsSearched_withPriceAtMaximumValue_expectSingleProductRecordContainingNoDiscount() {
-        BigDecimal maxPrice = BigDecimal.valueOf(Long.MAX_VALUE).divide(BIG_DECIMAL_HUNDRED);
+        BigDecimal maxPrice = new BigDecimal("9618453729056184750983451629084712059483751029384756103847561029475102384756102938475610293847561029");
         Product overPricedProduct = new Product();
         overPricedProduct.setName("Over Priced Product");
         overPricedProduct.setPrice(maxPrice);
@@ -40,21 +39,21 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenSingleFullPriceProductIsSearched_withPriceOverMaximumValue_expectException() {
-        BigDecimal overPrice = BigDecimal.valueOf(Long.MAX_VALUE).add(BigDecimal.ONE).divide(BIG_DECIMAL_HUNDRED);
+        BigDecimal overPrice = new BigDecimal("96184537290561847509834516290847120594837510293847561038475610294751023847561029384756102938475610290");
         Product overPricedProduct = new Product();
         overPricedProduct.setName("Over Priced Product");
         overPricedProduct.setPrice(overPrice);
 
         Exception databaseException = assertThrows(DbActionExecutionException.class, () -> repository.save(overPricedProduct));
         Throwable causeThrowable = databaseException.getCause();
-        String expectedMessage = String.format(VALUE_TOO_LARGE_TO_CONVERT, overPrice.multiply(BIG_DECIMAL_HUNDRED));
+        String expectedMessage = String.format(VALUE_TOO_LARGE_TO_CONVERT, overPrice);
         String thrownMessage = causeThrowable.getMessage();
         assertEquals(expectedMessage, thrownMessage);
         assertTrue(causeThrowable.getClass().isAssignableFrom(NumberFormatException.class));
     }
 
     @Test void whenSingleDiscountPriceProductIsSearched_withQuantityAtMaximumValue_expectSingleProductRecordContainingDiscount() {
-        BigInteger maxQuantity = BigInteger.valueOf(Long.MAX_VALUE);
+        BigInteger maxQuantity = new BigInteger("9618453729056184750983451629084712059483751029384756103847561029475102384756102938475610293847561029");
         Product unreasonablyDiscountedProduct = new Product();
         unreasonablyDiscountedProduct.setName("Unreasonably Discounted Product");
         unreasonablyDiscountedProduct.setPrice(BigDecimal.TEN);
@@ -66,7 +65,7 @@ public class CatalogRepositoryTest {
     }
 
     @Test void whenSingleDiscountedProductIsSearched_withQuantityOverMaximumValue_expectException() {
-        BigInteger maxQuantity = BigInteger.valueOf(Long.MAX_VALUE).add(BigInteger.ONE);
+        BigInteger maxQuantity = new BigInteger("96184537290561847509834516290847120594837510293847561038475610294751023847561029384756102938475610290");
         Product unreasonablyDiscountedProduct = new Product();
         unreasonablyDiscountedProduct.setName("Unreasonably Discounted Product");
         unreasonablyDiscountedProduct.setPrice(BigDecimal.TEN);

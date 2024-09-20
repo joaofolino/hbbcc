@@ -11,7 +11,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static com.example.hbbcc.util.BigMath.*;
+import static com.example.hbbcc.data.util.NumberToStringStorageHelper.*;
 
 @Data
 @AccessType(Type.PROPERTY)
@@ -28,24 +28,25 @@ public class Discount {
     private BigDecimal price;
 
     @Column("QUANTITY")
-    public long getLongQuantity() {
-        checkBigIntegerCanBeAccuratelyConvertedToLong(quantity);
-        return quantity.longValue();
+    public String getLongQuantity() {
+        String stringQuantity = quantity.toString();
+        checkStringSizeOfBigIntegerConvertion(stringQuantity);
+        return stringQuantity;
     }
 
-    public void setLongQuantity(long quantity) {
-        this.quantity = BigInteger.valueOf(quantity);
+    public void setLongQuantity(String quantity) {
+        this.quantity = new BigInteger(quantity);
     }
 
     @Column("PRICE")
-    public long getLongPriceInCents() {
-        BigDecimal priceInCents = price.multiply(BIG_DECIMAL_HUNDRED);
-        checkBigDecimalCanBeAccuratelyConvertedToLong(priceInCents);
-        return priceInCents.longValue();
+    public String getLongPriceInCents() {
+        String stringPrice = price.toPlainString();
+        checkStringSizeOfBigDecimalConvertion(stringPrice);
+        return stringPrice;
     }
 
-    public void setLongPriceInCents(long priceInCents) {
-        this.price = BigDecimal.valueOf(priceInCents).divide(BIG_DECIMAL_HUNDRED);
+    public void setLongPriceInCents(String stringPrice) {
+        this.price = new BigDecimal(stringPrice);
     }
 
     Discount(BigInteger quantity, BigDecimal price) {
