@@ -25,7 +25,7 @@ This application was developed from an endpoint description that encapsulated a 
 
 # Improvements
 Additional functionality that was not added but would be nice to have:
-- I'm happy with the unit tests but would like to have had included integration tests
+- I'm happy with the unit tests but would like to have had included more integration tests
 - SWAGGER endpoints, for ease of integration
 - Finish extreme case coverage, with more understanding of what the limits should look like
 - Caching layer, to avoid direct access to a database
