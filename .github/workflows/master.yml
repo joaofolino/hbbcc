@@ -19,12 +19,12 @@ jobs:
           java-version: 17
 
       - name: unit tests
-        run: mvn -B test --file pom.xml
+        run: ./gradlew test
 
       - name: build the app
         run: |
-          mvn clean
-          mvn -B package --file pom.xml
+          ./gradlew clean
+          ./gradlew bootJar
       - name: build the docker image
         uses: docker/build-push-action@v4
         with:
