@@ -14,7 +14,7 @@ Simply navigate to the project path and run the following command to start the s
 ./gradlew test
 ```
 
-# Aproach
+# Approach
 This application was developed from an endpoint description that encapsulated a specific business logic.
 1. I started by describing tests to ensure the requirements on the business logic would be met;
 2. Worked my way down do the data layer, to ensure I would have coverage for reasonably generic persistence of the necessary data structures;
@@ -22,6 +22,7 @@ This application was developed from an endpoint description that encapsulated a 
 4. Built the application from the bottom up, layer by layer.
 5. Started the application and checked that everything was actually working as intended.
 6. Finished documenting it.
+7. Reviewed the requirements and made some additional changes to tests, storage and build.
 
 # Improvements
 Additional functionality that was not added but would be nice to have:
