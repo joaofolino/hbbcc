@@ -9,10 +9,12 @@ Simply navigate to the project path and run the following command to start the s
 ```
 ## DockerHub
 Additionally, a docker images for the master branch are available at [DockerHub](https://hub.docker.com/r/joaofolino/hbbcc).
-Use the following to pull it:
+Use the following to pull and run it:
 ```
 docker pull joaofolino/hbbcc
+docker run -p 8080:8080 joaofolino/hbbcc
 ```
+
 # Tests
 Simply navigate to the project path and run the following command to start the server locally.
 ```
